@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0d1020">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Тетрис">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css"><title>Тетрис</title></head>
+<body>
+<main id="app">
+  <header id="hud">
+    <div class="glass box" id="holdBox"><canvas id="hold"></canvas></div>
+    <div class="glass stats">
+      <button id="pauseBtn" aria-label="Пауза">❚❚</button>
+      <div><small>Счёт</small><b id="score">0</b></div>
+      <div class="row"><div><small>Уровень</small><b id="level">1</b></div><div><small>Рекорд</small><b id="best">0</b></div></div>
+    </div>
+    <div class="glass box"><canvas id="next"></canvas></div>
+  </header>
+  <section id="stage"><canvas id="board"></canvas></section>
+  <nav id="pad" hidden>
+    <button data-a="left">◀</button><button data-a="down">▼</button><button data-a="right">▶</button>
+    <button data-a="ccw">⟲</button><button data-a="cw">⟳</button><button data-a="drop">⤓</button><button data-a="hold">Hold</button>
+  </nav>
+</main>
+
+<div class="screen on" id="menu"><div class="glass panel">
+  <h1>Тетрис</h1><p class="hint">Свайп двигает, тап вращает,<br>быстрый свайп вниз — сброс</p>
+  <button class="btn primary" data-go="play">Играть</button>
+  <button class="btn" data-go="settings">Настройки</button>
+</div></div>
+
+<div class="screen" id="pause"><div class="glass panel">
+  <h2>Пауза</h2>
+  <button class="btn primary" data-go="resume">Продолжить</button>
+  <button class="btn" data-go="settings">Настройки</button>
+  <button class="btn" data-go="menu">В меню</button>
+</div></div>
+
+<div class="screen" id="over"><div class="glass panel">
+  <h2>Игра окончена</h2><p class="big" id="finalScore">0</p><p class="hint" id="finalNote"></p>
+  <button class="btn primary" data-go="play">Играть снова</button>
+  <button class="btn" data-go="menu">В меню</button>
+</div></div>
+
+<div class="screen" id="settings"><div class="glass panel">
+  <h2>Настройки</h2>
+  <label class="opt">Звук<input type="checkbox" data-s="sound"></label>
+  <label class="opt">Музыка<input type="checkbox" data-s="music"></label>
+  <label class="opt">Вибрация<input type="checkbox" data-s="vibe"></label>
+  <label class="opt">Кнопки на экране<input type="checkbox" data-s="pad"></label>
+  <button class="btn primary" data-go="back">Назад</button>
+</div></div>
+<script src="game.js"></script>
+<script>if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js'));</script>
+</body></html>
